@@ -1,0 +1,75 @@
+- generic "ClubOS, Biguá Gestión":
+  - generic: B.
+  - generic: ClubOS
+  - generic: BIGUÁ GESTIÓN
+- generic: MI CLUB
+- button "Inicio":
+  - generic: Inicio
+- button "Mis divisiones":
+  - generic: Mis divisiones
+- button "Cuotas y pagos":
+  - generic: Cuotas y pagos
+- button "Administración":
+  - generic: Administración
+- generic: ADMINISTRACIÓN
+- button "Facturación mensual":
+  - generic: Facturación mensual
+- button "Control de morosidad":
+  - generic: Control de morosidad
+- button "Grupos familiares":
+  - generic: Grupos familiares
+- button "Cambio de temporada":
+  - generic: Cambio de temporada
+- generic: Pa
+- generic: Prueba administrador
+- generic: administrador · socio
+- button "Cerrar sesión ↗":
+  - generic: Cerrar sesión ↗
+- heading "Detalle de cobro familiar" [level=1]
+- generic: ADMINISTRACIÓN / COBRANZAS
+- heading "Detalle de cobro" [level=1]
+- generic: Consultá el registro original y descargá el comprobante administrativo.
+- generic: OPERACIÓN CFAM-1
+- generic: 22/10/2026 20:21
+- generic: Registrado
+- generic: IMPORTE REGISTRADO
+- generic: $ 1.000,00
+- generic: Socios
+- generic: "1"
+- generic: Integrantes del cobro
+- generic: Cuotas
+- generic: "1"
+- generic: Aplicaciones registradas
+- generic: Grupo
+- generic: "#1"
+- generic: Identificador familiar
+- heading "Información del cobro" [level=1]
+- generic: Datos guardados al confirmar la operación.
+- generic: Pagador
+- generic: Persona ficticia QA
+- generic: Medio de pago
+- generic: Efectivo
+- generic: Referencia
+- generic: Sin referencia registrada
+- generic: Administrador que registró
+- generic: "Usuario #1"
+- heading "Distribución entre socios" [level=1]
+- generic: Detalle de los pagos individuales incluidos en esta operación.
+- generic: QA, Jugador
+- generic: "Socio #5"
+- generic: $ 1.000,00
+- generic: Cobro familiar QA
+- generic: "2026-11 · Cuota #2"
+- generic: $ 1.000,00
+- button "Ver cuenta individual":
+  - generic: Ver cuenta individual
+- heading "Comprobante PDF" [level=1]
+- generic: Documento administrativo con el detalle de la operación.
+- alert:
+  - generic: Antes de continuar
+  - generic: El comprobante documenta un cobro registrado en ClubOS. No reemplaza una factura fiscal ni una constancia bancaria.
+- button "Guardar / imprimir PDF":
+  - generic: Guardar / imprimir PDF
+- generic: En Android, elegí «Guardar como PDF» en el selector de impresora.
+- button "Actualizar comprobante":
+  - generic: Actualizar comprobante

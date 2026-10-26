@@ -1,0 +1,439 @@
+{
+  "checks": [
+    {
+      "name": "crear cuota para cobro familiar",
+      "pass": true
+    },
+    {
+      "name": "cobro familiar concurrente idempotente",
+      "pass": true
+    },
+    {
+      "name": "misma clave con otro monto rechazada",
+      "pass": true
+    },
+    {
+      "name": "cuotas duplicadas en cobro rechazadas",
+      "pass": true
+    },
+    {
+      "name": "historial y comprobante familiar",
+      "pass": true
+    },
+    {
+      "name": "arancel y emision concurrente sin duplicados",
+      "pass": true
+    },
+    {
+      "name": "transicion temporada y reintento",
+      "pass": true
+    },
+    {
+      "name": "aislamiento otro club /divisiones/1/jugadores",
+      "pass": true
+    },
+    {
+      "name": "aislamiento otro club /entrenamientos/1/asistencia",
+      "pass": true
+    },
+    {
+      "name": "aislamiento otro club /viajes/1",
+      "pass": true
+    },
+    {
+      "name": "aislamiento otro club /jugadores/5/historial",
+      "pass": true
+    },
+    {
+      "name": "aislamiento otro club /finanzas/socios/5/cuotas",
+      "pass": true
+    },
+    {
+      "name": "aislamiento otro club /pagos-familiares/1",
+      "pass": true
+    },
+    {
+      "name": "socio sin privilegios /socios",
+      "pass": true
+    },
+    {
+      "name": "socio sin privilegios /familias",
+      "pass": true
+    },
+    {
+      "name": "socio sin privilegios /facturacion/aranceles",
+      "pass": true
+    },
+    {
+      "name": "socio sin privilegios /reportes/morosidad",
+      "pass": true
+    },
+    {
+      "name": "socio sin privilegios /pagos-familiares/familias/1/historial",
+      "pass": true
+    },
+    {
+      "name": "inyeccion en ID rechazada",
+      "pass": true
+    },
+    {
+      "name": "asistencia repetida rechazada",
+      "pass": true
+    },
+    {
+      "name": "rollback cobro mixto invalido",
+      "pass": true
+    },
+    {
+      "name": "logout revoca refresh",
+      "pass": true
+    }
+  ],
+  "evidence": [
+    {
+      "p": "/auth/login",
+      "m": "POST",
+      "status": 200,
+      "ms": 692,
+      "body": {
+        "session": true
+      }
+    },
+    {
+      "p": "/auth/login",
+      "m": "POST",
+      "status": 200,
+      "ms": 541,
+      "body": {
+        "session": true
+      }
+    },
+    {
+      "p": "/finanzas/cuotas",
+      "m": "POST",
+      "status": 201,
+      "ms": 14,
+      "body": {
+        "id": 2,
+        "message": "Cuota creada correctamente"
+      }
+    },
+    {
+      "p": "/pagos-familiares/familias/1/cobrar",
+      "m": "POST",
+      "status": 201,
+      "ms": 31,
+      "body": {
+        "loteId": 1,
+        "total": "1000.00",
+        "repetido": false
+      }
+    },
+    {
+      "p": "/pagos-familiares/familias/1/cobrar",
+      "m": "POST",
+      "status": 200,
+      "ms": 31,
+      "body": {
+        "loteId": 1,
+        "total": "1000",
+        "repetido": true
+      }
+    },
+    {
+      "p": "/pagos-familiares/familias/1/cobrar",
+      "m": "POST",
+      "status": 409,
+      "ms": 8,
+      "body": {
+        "error": "Esta clave ya se usó para otra distribución"
+      }
+    },
+    {
+      "p": "/pagos-familiares/familias/1/cobrar",
+      "m": "POST",
+      "status": 400,
+      "ms": 5,
+      "body": {
+        "error": "No repitas una misma cuota"
+      }
+    },
+    {
+      "p": "/pagos-familiares/familias/1/historial",
+      "m": "GET",
+      "status": 200,
+      "ms": 8,
+      "body": [
+        {
+          "id": 1,
+          "pagador": "Persona ficticia QA",
+          "metodo": "efectivo",
+          "referencia": null,
+          "total": 1000,
+          "fecha": "22/10/2026 20:21"
+        }
+      ]
+    },
+    {
+      "p": "/pagos-familiares/1",
+      "m": "GET",
+      "status": 200,
+      "ms": 7,
+      "body": {
+        "id": 1,
+        "grupoId": 1,
+        "pagador": "Persona ficticia QA",
+        "administradorId": 1,
+        "metodo": "efectivo",
+        "referencia": null,
+        "total": 1000,
+        "fecha": "22/10/2026 20:21",
+        "aplicaciones": [
+          {
+            "socioId": 5,
+            "pagoId": 2,
+            "cuotaId": 2,
+            "monto": 1000,
+            "nombre": "Jugador",
+            "apellido": "QA",
+            "concepto": "Cobro familiar QA",
+            "periodo": "2026-11"
+          }
+        ]
+      }
+    },
+    {
+      "p": "/facturacion/aranceles",
+      "m": "POST",
+      "status": 200,
+      "ms": 13,
+      "body": {
+        "message": "Arancel guardado",
+        "disciplinaId": 3,
+        "importe": "1500.00"
+      }
+    },
+    {
+      "p": "/facturacion/2026-12/confirmar",
+      "m": "POST",
+      "status": 200,
+      "ms": 24,
+      "body": {
+        "message": "Emisión mensual completada",
+        "periodo": "2026-12",
+        "creadas": 1,
+        "existentes": 0,
+        "sinArancel": 0
+      }
+    },
+    {
+      "p": "/facturacion/2026-12/confirmar",
+      "m": "POST",
+      "status": 200,
+      "ms": 30,
+      "body": {
+        "message": "Emisión mensual completada",
+        "periodo": "2026-12",
+        "creadas": 0,
+        "existentes": 1,
+        "sinArancel": 0
+      }
+    },
+    {
+      "p": "/divisiones",
+      "m": "POST",
+      "status": 201,
+      "ms": 6,
+      "body": {
+        "id": 2,
+        "message": "División creada"
+      }
+    },
+    {
+      "p": "/temporadas/2026/confirmar",
+      "m": "POST",
+      "status": 200,
+      "ms": 16,
+      "body": {
+        "message": "Transición finalizada: 1 nuevas inscripciones",
+        "inscriptos": 1,
+        "omitidos": 0,
+        "detalle": "Se conservó el historial y no se modificaron cuotas ni pagos."
+      }
+    },
+    {
+      "p": "/temporadas/2026/confirmar",
+      "m": "POST",
+      "status": 200,
+      "ms": 9,
+      "body": {
+        "message": "Transición finalizada: 0 nuevas inscripciones",
+        "inscriptos": 0,
+        "omitidos": 1,
+        "detalle": "Se conservó el historial y no se modificaron cuotas ni pagos."
+      }
+    },
+    {
+      "p": "/auth/login",
+      "m": "POST",
+      "status": 200,
+      "ms": 10,
+      "body": {
+        "session": true
+      }
+    },
+    {
+      "p": "/divisiones/1/jugadores",
+      "m": "GET",
+      "status": 404,
+      "ms": 5,
+      "body": {
+        "error": "División inexistente"
+      }
+    },
+    {
+      "p": "/entrenamientos/1/asistencia",
+      "m": "GET",
+      "status": 404,
+      "ms": 6,
+      "body": {
+        "error": "Entrenamiento inexistente"
+      }
+    },
+    {
+      "p": "/viajes/1",
+      "m": "GET",
+      "status": 404,
+      "ms": 7,
+      "body": {
+        "error": "Viaje inexistente"
+      }
+    },
+    {
+      "p": "/jugadores/5/historial",
+      "m": "GET",
+      "status": 404,
+      "ms": 6,
+      "body": {
+        "error": "Jugador no encontrado"
+      }
+    },
+    {
+      "p": "/finanzas/socios/5/cuotas",
+      "m": "GET",
+      "status": 404,
+      "ms": 5,
+      "body": {
+        "error": "Socio no encontrado"
+      }
+    },
+    {
+      "p": "/pagos-familiares/1",
+      "m": "GET",
+      "status": 404,
+      "ms": 5,
+      "body": {
+        "error": "Cobro familiar no encontrado"
+      }
+    },
+    {
+      "p": "/socios",
+      "m": "GET",
+      "status": 403,
+      "ms": 5,
+      "body": {
+        "error": "No tenés permisos"
+      }
+    },
+    {
+      "p": "/familias",
+      "m": "GET",
+      "status": 403,
+      "ms": 4,
+      "body": {
+        "error": "No tenés permisos"
+      }
+    },
+    {
+      "p": "/facturacion/aranceles",
+      "m": "GET",
+      "status": 403,
+      "ms": 3,
+      "body": {
+        "error": "No tenés permisos"
+      }
+    },
+    {
+      "p": "/reportes/morosidad",
+      "m": "GET",
+      "status": 403,
+      "ms": 4,
+      "body": {
+        "error": "No tenés permisos"
+      }
+    },
+    {
+      "p": "/pagos-familiares/familias/1/historial",
+      "m": "GET",
+      "status": 403,
+      "ms": 4,
+      "body": {
+        "error": "No tenés permisos"
+      }
+    },
+    {
+      "p": "/jugadores/1%20OR%201=1/historial",
+      "m": "GET",
+      "status": 400,
+      "ms": 4,
+      "body": {
+        "error": "Socio inválido"
+      }
+    },
+    {
+      "p": "/entrenamientos/1/asistencia",
+      "m": "POST",
+      "status": 400,
+      "ms": 7,
+      "body": {
+        "error": "Hay jugadores repetidos en la carga"
+      }
+    },
+    {
+      "p": "/pagos-familiares/familias/1/cobrar",
+      "m": "POST",
+      "status": 404,
+      "ms": 7,
+      "body": {
+        "error": "Una cuota no pertenece al club"
+      }
+    },
+    {
+      "p": "/auth/login",
+      "m": "POST",
+      "status": 200,
+      "ms": 502,
+      "body": {
+        "session": true
+      }
+    },
+    {
+      "p": "/auth/logout",
+      "m": "POST",
+      "status": 200,
+      "ms": 5,
+      "body": {
+        "message": "Sesión finalizada"
+      }
+    },
+    {
+      "p": "/auth/refresh",
+      "m": "POST",
+      "status": 401,
+      "ms": 7,
+      "body": {
+        "error": "Sesión revocada"
+      }
+    }
+  ]
+}

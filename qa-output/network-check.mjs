@@ -1,0 +1,3 @@
+﻿import fs from 'node:fs';import vm from 'node:vm';import ts from '../ClubOS/frontend/node_modules/typescript/lib/typescript.js';
+const js=ts.transpileModule(fs.readFileSync('../ClubOS/frontend/services/config.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2020}}).outputText;
+for(const mode of ['offline','html200']){const ctx={exports:{},process:{env:{EXPO_PUBLIC_API_URL:'http://qa.invalid/api'}},console:{log(){},warn(){}},fetch:async()=>{if(mode==='offline')throw Error('offline');return {ok:true,json:async()=>{throw Error('HTML')}}}};vm.runInNewContext(js,ctx);try{console.log(mode,'RESOLVED',JSON.stringify(await ctx.exports.requestJson('/test')))}catch(e){console.log(mode,'REJECTED',e.message)}}

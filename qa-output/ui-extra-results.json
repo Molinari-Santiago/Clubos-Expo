@@ -1,0 +1,26 @@
+[
+  {
+    "path": "/entrenamientos/1",
+    "snapshot": ""
+  },
+  {
+    "path": "/viajes/division/1",
+    "snapshot": ""
+  },
+  {
+    "path": "/viajes/1",
+    "snapshot": ""
+  },
+  {
+    "path": "/cuenta-familiar?id=1",
+    "snapshot": ""
+  },
+  {
+    "path": "/pago-familiar?id=1",
+    "snapshot": ""
+  },
+  {
+    "path": "/comprobante-familiar?loteId=1",
+    "snapshot": "- generic \"ClubOS, Biguá Gestión\":\n  - generic: B.\n  - generic: ClubOS\n  - generic: BIGUÁ GESTIÓN\n- progressbar:\n- generic: Restaurando tu sesión…"
+  }
+]

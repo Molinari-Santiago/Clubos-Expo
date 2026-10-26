@@ -1,0 +1,468 @@
+[
+  {
+    "path": "/auth/register",
+    "method": "POST",
+    "status": 201,
+    "body": {
+      "message": "Cuenta creada. Ya podés iniciar sesión."
+    }
+  },
+  {
+    "path": "/auth/login",
+    "method": "POST",
+    "status": 200,
+    "body": {
+      "session": true
+    }
+  },
+  {
+    "path": "/auth/register",
+    "method": "POST",
+    "status": 201,
+    "body": {
+      "message": "Cuenta creada. Ya podés iniciar sesión."
+    }
+  },
+  {
+    "path": "/auth/login",
+    "method": "POST",
+    "status": 200,
+    "body": {
+      "session": true
+    }
+  },
+  {
+    "path": "/auth/register",
+    "method": "POST",
+    "status": 201,
+    "body": {
+      "message": "Cuenta creada. Ya podés iniciar sesión."
+    }
+  },
+  {
+    "path": "/auth/login",
+    "method": "POST",
+    "status": 200,
+    "body": {
+      "session": true
+    }
+  },
+  {
+    "path": "/auth/register",
+    "method": "POST",
+    "status": 201,
+    "body": {
+      "message": "Cuenta creada. Ya podés iniciar sesión."
+    }
+  },
+  {
+    "path": "/auth/login",
+    "method": "POST",
+    "status": 200,
+    "body": {
+      "session": true
+    }
+  },
+  {
+    "path": "/health",
+    "method": "GET",
+    "status": 200,
+    "body": {
+      "ok": true,
+      "service": "clubos-api"
+    }
+  },
+  {
+    "path": "/divisiones/disciplinas",
+    "method": "GET",
+    "status": 200,
+    "body": [
+      {
+        "id": 3,
+        "nombre": "Gimnasio"
+      },
+      {
+        "id": 2,
+        "nombre": "Hockey"
+      },
+      {
+        "id": 1,
+        "nombre": "Rugby"
+      }
+    ]
+  },
+  {
+    "path": "/divisiones",
+    "method": "POST",
+    "status": 201,
+    "body": {
+      "id": 1,
+      "message": "División creada"
+    }
+  },
+  {
+    "path": "/socios",
+    "method": "POST",
+    "status": 201,
+    "body": {
+      "id": 5,
+      "message": "Socio creado",
+      "anioNacimiento": 2011
+    }
+  },
+  {
+    "path": "/divisiones/1/inscripciones",
+    "method": "POST",
+    "status": 201,
+    "body": {
+      "message": "Jugador inscripto",
+      "id": 1,
+      "divisionId": 1,
+      "divisionNombre": "M15",
+      "temporada": 2026,
+      "edadDeportiva": 15,
+      "modalidad": "propia"
+    }
+  },
+  {
+    "path": "/divisiones/1/asignaciones",
+    "method": "POST",
+    "status": 201,
+    "body": {
+      "message": "Responsable asignado"
+    }
+  },
+  {
+    "path": "/divisiones/1/asignaciones",
+    "method": "POST",
+    "status": 201,
+    "body": {
+      "message": "Responsable asignado"
+    }
+  },
+  {
+    "path": "/entrenamientos",
+    "method": "POST",
+    "status": 201,
+    "body": {
+      "id": 1,
+      "message": "Entrenamiento creado"
+    }
+  },
+  {
+    "path": "/entrenamientos/1/asistencia",
+    "method": "POST",
+    "status": 200,
+    "body": {
+      "message": "Asistencia guardada",
+      "actualizados": 1
+    }
+  },
+  {
+    "path": "/entrenamientos/1/asistencia",
+    "method": "GET",
+    "status": 200,
+    "body": [
+      {
+        "socioId": 5,
+        "estado": "presente",
+        "observacion": null,
+        "registradoPor": 2,
+        "actualizadoEn": "2026-10-22T23:16:09.000Z"
+      }
+    ]
+  },
+  {
+    "path": "/entrenamientos",
+    "method": "POST",
+    "status": 500,
+    "body": {
+      "error": "Error interno del servidor"
+    }
+  },
+  {
+    "path": "/socios",
+    "method": "GET",
+    "status": 200,
+    "body": [
+      {
+        "id": 1,
+        "numero_socio": "B-1",
+        "nombre": "Prueba",
+        "apellido": "administrador",
+        "dni": null,
+        "telefono": null,
+        "estado": "activo",
+        "anioNacimiento": 2011
+      },
+      {
+        "id": 3,
+        "numero_socio": "B-3",
+        "nombre": "Prueba",
+        "apellido": "entrenador",
+        "dni": null,
+        "telefono": null,
+        "estado": "activo",
+        "anioNacimiento": 2011
+      },
+      {
+        "id": 2,
+        "numero_socio": "B-2",
+        "nombre": "Prueba",
+        "apellido": "manager",
+        "dni": null,
+        "telefono": null,
+        "estado": "activo",
+        "anioNacimiento": 2011
+      },
+      {
+        "id": 5,
+        "numero_socio": "B-5",
+        "nombre": "Jugador",
+        "apellido": "QA",
+        "dni": null,
+        "telefono": null,
+        "estado": "activo",
+        "anioNacimiento": 2011
+      },
+      {
+        "id": 4,
+        "numero_socio": "B-4",
+        "nombre": "Prueba",
+        "apellido": "socio",
+        "dni": null,
+        "telefono": null,
+        "estado": "activo",
+        "anioNacimiento": 2011
+      }
+    ]
+  },
+  {
+    "path": "/divisiones",
+    "method": "GET",
+    "status": 200,
+    "body": [
+      {
+        "id": 1,
+        "nombre": "M15",
+        "temporada": 2026,
+        "edadCategoria": 15,
+        "disciplinaId": 3,
+        "disciplina": "Gimnasio"
+      }
+    ]
+  },
+  {
+    "path": "/familias",
+    "method": "GET",
+    "status": 200,
+    "body": []
+  },
+  {
+    "path": "/temporadas",
+    "method": "GET",
+    "status": 404,
+    "body": {
+      "error": "Endpoint no encontrado"
+    }
+  },
+  {
+    "path": "/facturacion",
+    "method": "GET",
+    "status": 404,
+    "body": {
+      "error": "Endpoint no encontrado"
+    }
+  },
+  {
+    "path": "/viajes?divisionId=1",
+    "method": "GET",
+    "status": 200,
+    "body": {
+      "viajes": [],
+      "puedeGestionar": true
+    }
+  },
+  {
+    "path": "/socios",
+    "method": "GET",
+    "status": 403,
+    "body": {
+      "error": "No tenés permisos"
+    }
+  },
+  {
+    "path": "/divisiones",
+    "method": "GET",
+    "status": 200,
+    "body": [
+      {
+        "id": 1,
+        "nombre": "M15",
+        "temporada": 2026,
+        "edadCategoria": 15,
+        "disciplinaId": 3,
+        "disciplina": "Gimnasio"
+      }
+    ]
+  },
+  {
+    "path": "/familias",
+    "method": "GET",
+    "status": 403,
+    "body": {
+      "error": "No tenés permisos"
+    }
+  },
+  {
+    "path": "/temporadas",
+    "method": "GET",
+    "status": 403,
+    "body": {
+      "error": "No tenés permisos"
+    }
+  },
+  {
+    "path": "/facturacion",
+    "method": "GET",
+    "status": 403,
+    "body": {
+      "error": "No tenés permisos"
+    }
+  },
+  {
+    "path": "/viajes?divisionId=1",
+    "method": "GET",
+    "status": 200,
+    "body": {
+      "viajes": [],
+      "puedeGestionar": true
+    }
+  },
+  {
+    "path": "/socios",
+    "method": "GET",
+    "status": 403,
+    "body": {
+      "error": "No tenés permisos"
+    }
+  },
+  {
+    "path": "/divisiones",
+    "method": "GET",
+    "status": 200,
+    "body": [
+      {
+        "id": 1,
+        "nombre": "M15",
+        "temporada": 2026,
+        "edadCategoria": 15,
+        "disciplinaId": 3,
+        "disciplina": "Gimnasio"
+      }
+    ]
+  },
+  {
+    "path": "/familias",
+    "method": "GET",
+    "status": 403,
+    "body": {
+      "error": "No tenés permisos"
+    }
+  },
+  {
+    "path": "/temporadas",
+    "method": "GET",
+    "status": 403,
+    "body": {
+      "error": "No tenés permisos"
+    }
+  },
+  {
+    "path": "/facturacion",
+    "method": "GET",
+    "status": 403,
+    "body": {
+      "error": "No tenés permisos"
+    }
+  },
+  {
+    "path": "/viajes?divisionId=1",
+    "method": "GET",
+    "status": 200,
+    "body": {
+      "viajes": [],
+      "puedeGestionar": false
+    }
+  },
+  {
+    "path": "/socios",
+    "method": "GET",
+    "status": 403,
+    "body": {
+      "error": "No tenés permisos"
+    }
+  },
+  {
+    "path": "/divisiones",
+    "method": "GET",
+    "status": 200,
+    "body": []
+  },
+  {
+    "path": "/familias",
+    "method": "GET",
+    "status": 403,
+    "body": {
+      "error": "No tenés permisos"
+    }
+  },
+  {
+    "path": "/temporadas",
+    "method": "GET",
+    "status": 403,
+    "body": {
+      "error": "No tenés permisos"
+    }
+  },
+  {
+    "path": "/facturacion",
+    "method": "GET",
+    "status": 403,
+    "body": {
+      "error": "No tenés permisos"
+    }
+  },
+  {
+    "path": "/viajes?divisionId=1",
+    "method": "GET",
+    "status": 403,
+    "body": {
+      "error": "No tenés permisos"
+    }
+  },
+  {
+    "path": "/auth/refresh",
+    "method": "POST",
+    "status": 200,
+    "body": {
+      "session": true
+    }
+  },
+  {
+    "path": "/auth/refresh",
+    "method": "POST",
+    "status": 401,
+    "body": {
+      "error": "Sesión revocada"
+    }
+  },
+  {
+    "path": "/socios",
+    "method": "POST",
+    "status": 400,
+    "body": {
+      "error": "nombre: String must contain at least 2 character(s); apellido: String must contain at least 2 character(s); anioNacimiento: Number must be less than or equal to 2026"
+    }
+  }
+]

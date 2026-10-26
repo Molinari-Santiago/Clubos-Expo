@@ -1,0 +1,270 @@
+[
+  {
+    "p": "/auth/login",
+    "m": "POST",
+    "status": 200,
+    "body": {
+      "session": true
+    }
+  },
+  {
+    "p": "/temporadas/2027/vista-previa",
+    "m": "GET",
+    "status": 200,
+    "body": {
+      "temporadaOrigen": 2027,
+      "temporadaDestino": 2028,
+      "total": 0,
+      "listos": 0,
+      "yaInscritos": 0,
+      "revisar": 0,
+      "filas": []
+    }
+  },
+  {
+    "p": "/facturacion/aranceles",
+    "m": "GET",
+    "status": 200,
+    "body": [
+      {
+        "disciplinaId": 3,
+        "disciplina": "Gimnasio",
+        "importe": null,
+        "activo": false
+      },
+      {
+        "disciplinaId": 2,
+        "disciplina": "Hockey",
+        "importe": null,
+        "activo": false
+      },
+      {
+        "disciplinaId": 1,
+        "disciplina": "Rugby",
+        "importe": null,
+        "activo": false
+      }
+    ]
+  },
+  {
+    "p": "/facturacion/2026-10/vista-previa",
+    "m": "GET",
+    "status": 200,
+    "body": {
+      "periodo": "2026-10",
+      "vencimiento": "2026-10-10",
+      "total": 1,
+      "generar": 0,
+      "existentes": 0,
+      "sinArancel": 1,
+      "filas": [
+        {
+          "socioId": 5,
+          "nombre": "QA, Jugador",
+          "disciplina": "Gimnasio",
+          "concepto": "Cuota Gimnasio",
+          "arancel": null,
+          "descuentoIndividual": 0,
+          "descuentoFamiliar": 0,
+          "descuento": 0,
+          "importe": null,
+          "estado": "sin_arancel"
+        }
+      ]
+    }
+  },
+  {
+    "p": "/finanzas/socios/5/cuotas",
+    "m": "GET",
+    "status": 200,
+    "body": {
+      "socio": {
+        "id": 5,
+        "numeroSocio": "B-5",
+        "nombre": "Jugador",
+        "apellido": "QA",
+        "estado": "activo"
+      },
+      "cuotas": [],
+      "deudaTotal": "0.00",
+      "deudaVencida": "0.00"
+    }
+  },
+  {
+    "p": "/jugadores/5",
+    "m": "GET",
+    "status": 404,
+    "body": {
+      "error": "Endpoint no encontrado"
+    }
+  },
+  {
+    "p": "/familias/configuracion",
+    "m": "GET",
+    "status": 200,
+    "body": {
+      "porcentaje2": 0,
+      "porcentaje3": 0,
+      "activo": false
+    }
+  },
+  {
+    "p": "/finanzas/cuotas",
+    "m": "POST",
+    "status": 201,
+    "body": {
+      "id": 1,
+      "message": "Cuota creada correctamente"
+    }
+  },
+  {
+    "p": "/finanzas/socios/5/cuotas",
+    "m": "GET",
+    "status": 200,
+    "body": {
+      "socio": {
+        "id": 5,
+        "numeroSocio": "B-5",
+        "nombre": "Jugador",
+        "apellido": "QA",
+        "estado": "activo"
+      },
+      "cuotas": [
+        {
+          "id": 1,
+          "periodo": "2026-10",
+          "concepto": "Cuota QA",
+          "vencimiento": "2026-10-30",
+          "importe": "1000.00",
+          "abonado": "0.00",
+          "saldo": "1000.00",
+          "estado": "pendiente"
+        }
+      ],
+      "deudaTotal": "1000.00",
+      "deudaVencida": "0.00"
+    }
+  },
+  {
+    "p": "/familias",
+    "m": "POST",
+    "status": 201,
+    "body": {
+      "id": 1,
+      "message": "Grupo familiar creado"
+    }
+  },
+  {
+    "p": "/familias/1/miembros",
+    "m": "POST",
+    "status": 201,
+    "body": {
+      "message": "Socio agregado a la familia"
+    }
+  },
+  {
+    "p": "/familias",
+    "m": "GET",
+    "status": 200,
+    "body": [
+      {
+        "id": 1,
+        "nombre": "Familia QA",
+        "miembros": [
+          {
+            "socioId": 5,
+            "nombre": "Jugador",
+            "apellido": "QA",
+            "numeroSocio": "B-5",
+            "estado": "activo"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "p": "/viajes",
+    "m": "POST",
+    "status": 201,
+    "body": {
+      "id": 1,
+      "message": "Viaje creado"
+    }
+  },
+  {
+    "p": "/viajes/1/participantes",
+    "m": "POST",
+    "status": 201,
+    "body": {
+      "id": 1,
+      "message": "Participante agregado"
+    }
+  },
+  {
+    "p": "/viajes/1",
+    "m": "GET",
+    "status": 200,
+    "body": {
+      "id": 1,
+      "titulo": "Viaje QA",
+      "destino": "Destino ficticio",
+      "salida": "2026-11-01",
+      "regreso": "2026-11-02",
+      "estado": "planificado",
+      "divisionId": 1,
+      "puntoSalida": null,
+      "horaSalida": null,
+      "transporte": null,
+      "notas": null,
+      "divisionNombre": "M15",
+      "disciplina": "Gimnasio",
+      "puedeGestionar": true
+    }
+  },
+  {
+    "p": "/finanzas/cuotas/1/pagos",
+    "m": "POST",
+    "status": 201,
+    "body": {
+      "pagoId": 1,
+      "message": "Pago registrado correctamente",
+      "saldoRestante": "0.00"
+    }
+  },
+  {
+    "p": "/finanzas/cuotas/1/pagos",
+    "m": "POST",
+    "status": 409,
+    "body": {
+      "error": "La cuota ya está pagada"
+    }
+  },
+  {
+    "p": "/finanzas/socios/5/cuotas",
+    "m": "GET",
+    "status": 200,
+    "body": {
+      "socio": {
+        "id": 5,
+        "numeroSocio": "B-5",
+        "nombre": "Jugador",
+        "apellido": "QA",
+        "estado": "activo"
+      },
+      "cuotas": [
+        {
+          "id": 1,
+          "periodo": "2026-10",
+          "concepto": "Cuota QA",
+          "vencimiento": "2026-10-30",
+          "importe": "1000.00",
+          "abonado": "1000.00",
+          "saldo": "0.00",
+          "estado": "pagada"
+        }
+      ],
+      "deudaTotal": "0.00",
+      "deudaVencida": "0.00"
+    }
+  }
+]
